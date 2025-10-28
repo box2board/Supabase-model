@@ -1,16 +1,10 @@
 {
-  "crons": [
+  "version": 2,
+  "builds": [
     {
-      "path": "/api/nfl/fetch-schedule",
-      "schedule": "0 */12 * * *"  // run every 12 hours
-    },
-    {
-      "path": "/api/nfl/fetch-odds",
-      "schedule": "*/30 * * * *"  // every 30 minutes
-    },
-    {
-      "path": "/api/nfl/run-model",
-      "schedule": "30 */6 * * *"  // every 6 hours + 30 min to ensure data present
+      "src": "next.config.js",
+      "use": "@vercel/next"
     }
-  ]
+  ],
+  "framework": "nextjs"
 }
