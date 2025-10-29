@@ -1,9 +1,12 @@
-export const metadata = {
+// app/layout.tsx
+import "./globals.css";
+import type { Metadata } from "next";
+import SiteTicker from "@/components/SiteTicker";
+
+export const metadata: Metadata = {
   title: "Box2Board",
   description: "Sports analytics, simplified.",
 };
-
-import "./globals.css";
 
 export default function RootLayout({
   children,
@@ -11,8 +14,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body>{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <body>
+        {/* Always-on, site-wide ticker */}
+        <SiteTicker />
+
+        {/* Page content */}
+        <main className="min-h-screen">{children}</main>
+      </body>
     </html>
   );
 }
