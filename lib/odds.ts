@@ -1,12 +1,9 @@
-// Minimal placeholders so the app compiles.
-// You can replace with your real Odds API logic later.
-
 export async function fetchOdds() {
-  // TODO: implement real fetch with THE_ODDS_API_KEY
+  // TODO: call The Odds API with your key and return normalized data
   return [];
 }
 
-export function extractOddsSnapshots(_oddsData: any[]) {
-  // TODO: implement your transform
+export function extractOddsSnapshots(_odds: unknown[]) {
+  // TODO: convert odds into your snapshot format
   return [];
 }
