@@ -2,11 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Your base theme */
-@layer base {
-  html, body {
-    @apply m-0 p-0 bg-[#0b0f14] text-[#e8eef7];
-    font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-  }
-  *, *::before, *::after { box-sizing: border-box; }
+:root {
+  --bg: #14141b;        /* ink-950 */
+  --card: #1f1f29;      /* ink-900 */
+  --text: #efeff5;      /* ink-100 */
+  --muted: #8b8ba5;     /* ink-400 */
+  --accent: #8c3dff;    /* primary-500 */
+  --accent-600:#752df2;
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* Cozy card */
+.cozy-card {
+  @apply rounded-cozy bg-[var(--card)] shadow-cozy border border-ink-800/60;
+}
+
+/* Ticker lane */
+.ticker-lane {
+  background: linear-gradient(90deg, rgba(140,61,255,.2), rgba(62,0,255,.15));
+  border-bottom: 1px solid rgba(140,61,255,.25);
 }
