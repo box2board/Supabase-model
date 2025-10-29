@@ -1,16 +1,4 @@
-// Minimal scoring stub you can expand later.
-
-export type GameInput = {
-  homeTeam?: string;
-  awayTeam?: string;
-  // add any metrics you’ll score on
-};
-
-export function scoreGame(game: GameInput) {
-  return {
-    score: 0,
-    reasons: [
-      `Scoring stub for ${game.homeTeam ?? 'HOME'} vs ${game.awayTeam ?? 'AWAY'}`
-    ]
-  };
+export function scoreGame(game: unknown) {
+  // TODO: plug in your real model
+  return { homeScore: 0, awayScore: 0, confidence: 0.0 };
 }
