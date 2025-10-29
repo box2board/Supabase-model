@@ -5,8 +5,7 @@ export const dynamic = 'force-dynamic';
 
 export async function GET() {
   try {
-    // Example placeholder; replace with your real latest model lookup.
-    // const latest = await prisma.yourModelTable.findFirst({ orderBy: { createdAt: 'desc' } });
+    // Placeholder until you wire to a real table:
     const latest = null;
     return NextResponse.json({ ok: true, latest });
   } catch (err: any) {
