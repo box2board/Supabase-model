@@ -1,11 +1,9 @@
-// Minimal placeholders so the app compiles.
-
-export async function fetchScoreboard(_date?: string) {
-  // TODO: implement real ESPN scoreboard fetch/parse
-  return {};
+export async function fetchScoreboard() {
+  // TODO: replace with real fetch to ESPN or your chosen source
+  return { events: [] };
 }
 
-export function extractGamesFromScoreboard(_data: any) {
-  // TODO: implement your transform
+export function extractGamesFromScoreboard(_data: unknown) {
+  // TODO: parse real data shape
   return [];
 }
