@@ -4,13 +4,13 @@
 import React from "react";
 
 type TickerItem = {
-  label: string;   // e.g., "DEN -3.5"
-  detail: string;  // e.g., "58% model edge"
+  label: string;
+  detail: string;
 };
 
 const mockItems: TickerItem[] = [
   { label: "NFL — Top Edges:", detail: "DEN -3.5 (58%) • PHI ML (56%) • DAL/NYG o44.5 (54%)" },
-  { label: "Market Moves:", detail: "BUF spread -2.5 → -3 • KC total 46.0 → 47.5" },
+  { label: "Market Moves:", detail: "BUF -2.5 → -3 • KC total 46.0 → 47.5" },
   { label: "Signals:", detail: "CLE PassRush+ vs SEA OL- • MIA Pace+ vs NE Slow" },
 ];
 
