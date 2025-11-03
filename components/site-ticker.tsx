@@ -3,23 +3,37 @@
 
 import React from "react";
 
-type TickerItem = { label: string; detail: string };
+type TickerItem = {
+  label: string;
+  value: string;
+};
 
-const mockItems: TickerItem[] = [
-  { label: "NFL — Top Edges:", detail: "DEN -3.5 (58%) • PHI ML (56%) • DAL/NYG o44.5 (54%)" },
-  { label: "Market Moves:", detail: "BUF -2.5 → -3 • KC total 46.0 → 47.5" },
-  { label: "Signals:", detail: "CLE PassRush+ vs SEA OL- • MIA Pace+ vs NE Slow" },
+const demo: TickerItem[] = [
+  { label: "NFL Power Signal", value: "BAL 62%" },
+  { label: "Top Prop", value: "CMC Anytime TD (Sim Edge +7%)" },
+  { label: "Line Move", value: "KC -2.5 → -3.5" },
+  { label: "Weather", value: "BUF @ 12 mph wind" },
 ];
 
-export default function SiteTicker() {
+export default function SiteTicker({
+  items = demo,
+  speed = 35, // lower is faster
+}: {
+  items?: TickerItem[];
+  speed?: number;
+}) {
+  // very simple CSS-driven marquee effect
   return (
-    <div className="b2b-ticker" role="region" aria-label="live ticker">
-      <div className="b2b-ticker__track">
-        {[...mockItems, ...mockItems].map((item, i) => (
-          <div className="b2b-ticker__item" key={i}>
-            <span className="b2b-ticker__label">{item.label}</span>
-            <span className="b2b-ticker__dot" aria-hidden>•</span>
-            <span className="b2b-ticker__detail">{item.detail}</span>
+    <div className="ticker-wrap">
+      <div
+        className="ticker"
+        style={{
+          animationDuration: `${speed}s`,
+        }}
+      >
+        {[...items, ...items].map((it, i) => (
+          <div className="tick" key={`${it.label}-${i}`}>
+            <strong>{it.label}:</strong>&nbsp;{it.value}
           </div>
         ))}
       </div>
