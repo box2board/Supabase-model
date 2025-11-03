@@ -3,10 +3,7 @@
 
 import React from "react";
 
-type TickerItem = {
-  label: string;
-  detail: string;
-};
+type TickerItem = { label: string; detail: string };
 
 const mockItems: TickerItem[] = [
   { label: "NFL — Top Edges:", detail: "DEN -3.5 (58%) • PHI ML (56%) • DAL/NYG o44.5 (54%)" },
