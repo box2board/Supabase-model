@@ -1,28 +1,155 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* app/globals.css */
 
+/* ---------- Theme ---------- */
 :root {
-  --bg: #14141b;        /* ink-950 */
-  --card: #1f1f29;      /* ink-900 */
-  --text: #efeff5;      /* ink-100 */
-  --muted: #8b8ba5;     /* ink-400 */
-  --accent: #8c3dff;    /* primary-500 */
-  --accent-600:#752df2;
+  --bg: #0e0e12;              /* cozy near-black */
+  --bg-elev: #15151c;         /* cards / surfaces */
+  --text: #e9e9f1;            /* primary text */
+  --muted: #b7b7c6;           /* secondary text */
+  --border: #262633;          /* subtle borders */
+  --accent: #bf00ff;          /* electric purple */
+  --accent-2: #7a00a8;        /* deeper purple */
+  --success: #39d98a;
+  --warn: #ffd166;
+  --danger: #ff6b6b;
+
+  --radius: 12px;
+  --shadow: 0 6px 20px rgba(0,0,0,0.35);
+
+  /* ticker */
+  --ticker-height: 40px;
+  --ticker-bg: #120f16;
+  --ticker-border: #2b1633;
 }
 
-html, body {
+/* ---------- Base ---------- */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html, body { height: 100%; }
+
+body.b2b-body {
+  margin: 0;
   background: var(--bg);
+  color: var(--text);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ---------- Shell ---------- */
+.b2b-shell {
+  min-height: 100dvh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+.b2b-header {
+  position: sticky;
+  top: var(--ticker-height); /* sit below ticker */
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  background: linear-gradient(180deg, rgba(23, 20, 28, 0.9), rgba(23, 20, 28, 0.65));
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--border);
+}
+
+.b2b-logo {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  font-size: 18px;
+}
+
+.b2b-nav a {
+  color: var(--muted);
+  text-decoration: none;
+  margin-left: 16px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  transition: color .15s ease, background .15s ease;
+}
+.b2b-nav a:hover {
+  color: var(--text);
+  background: #1a1a23;
+}
+
+.b2b-main {
+  width: 100%;
+  max-width: 1200px;
+  margin: 18px auto 28px;
+  padding: 0 16px;
+}
+
+.b2b-footer {
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  padding: 16px;
+  text-align: center;
+  background: #111017;
+}
+
+/* ---------- Ticker ---------- */
+.b2b-ticker {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  height: var(--ticker-height);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: linear-gradient(90deg, var(--ticker-bg), #160b1c 50%, var(--ticker-bg));
+  border-bottom: 1px solid var(--ticker-border);
+  box-shadow: inset 0 -1px 0 rgba(255,255,255,0.02);
+}
+
+/* marquee track */
+.b2b-ticker__track {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  animation: b2b-marquee 28s linear infinite;
+  will-change: transform;
+}
+
+@keyframes b2b-marquee {
+  0%   { transform: translateX(0%); }
+  100% { transform: translateX(-50%); } /* duplicated content → seamless */
+}
+
+.b2b-ticker__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 24px;
+  height: var(--ticker-height);
+  font-size: 14px;
   color: var(--text);
 }
 
-/* Cozy card */
-.cozy-card {
-  @apply rounded-cozy bg-[var(--card)] shadow-cozy border border-ink-800/60;
+.b2b-ticker__label {
+  font-weight: 700;
+  color: var(--accent);
 }
 
-/* Ticker lane */
-.ticker-lane {
-  background: linear-gradient(90deg, rgba(140,61,255,.2), rgba(62,0,255,.15));
-  border-bottom: 1px solid rgba(140,61,255,.25);
+.b2b-ticker__dot {
+  color: var(--accent);
+  opacity: 0.75;
+}
+
+.b2b-ticker__detail {
+  color: var(--muted);
+}
+
+/* ---------- Utilities ---------- */
+.card {
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
 }
