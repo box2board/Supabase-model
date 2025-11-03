@@ -1,39 +1,41 @@
-// app/layout.tsx
+import "./globals.css";
+import SiteTicker from "@/components/site-ticker";
+
 export const metadata = {
   title: "Box2Board",
   description: "Sports analytics, simplified.",
 };
 
-import "./globals.css";
-import SiteTicker from "@/components/site-ticker";
-
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className="b2b-body">
-        {/* Always-on global ticker */}
-        <SiteTicker />
-
-        {/* Page chrome */}
-        <div className="b2b-shell">
-          <header className="b2b-header">
-            <a href="/" className="b2b-logo">Box2Board</a>
-            <nav className="b2b-nav">
-              <a href="/nfl">NFL</a>
-              <a href="/nba">NBA</a>
-              <a href="/mlb">MLB</a>
-              <a href="/nhl">NHL</a>
-            </nav>
+      <body>
+        <div className="layout">
+          <header className="site-header">
+            <div className="container">
+              <div className="brand">
+                <a href="/">Box2Board</a>
+              </div>
+              <nav className="main-nav">
+                <a href="/nfl">NFL</a>
+                <a href="/nba">NBA</a>
+                <a href="/mlb">MLB</a>
+                <a href="/nhl">NHL</a>
+              </nav>
+            </div>
           </header>
 
-          <main className="b2b-main">{children}</main>
+          {/* Always-on ticker */}
+          <SiteTicker />
 
-          <footer className="b2b-footer">
-            <span>© {new Date().getFullYear()} Box2Board</span>
+          <main className="container" style={{ marginTop: "var(--space-4)" }}>
+            {children}
+          </main>
+
+          <footer className="site-footer">
+            <div className="container">
+              <small>© {new Date().getFullYear()} Box2Board</small>
+            </div>
           </footer>
         </div>
       </body>
