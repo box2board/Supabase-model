@@ -1,12 +1,11 @@
 // app/layout.tsx
-import "./globals.css";
-import type { Metadata } from "next";
-import SiteTicker from "@/components/SiteTicker";
-
-export const metadata: Metadata = {
+export const metadata = {
   title: "Box2Board",
   description: "Sports analytics, simplified.",
 };
+
+import "./globals.css";
+import SiteTicker from "@/components/site-ticker";
 
 export default function RootLayout({
   children,
@@ -14,13 +13,29 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body>
-        {/* Always-on, site-wide ticker */}
+    <html lang="en">
+      <body className="b2b-body">
+        {/* Always-on global ticker */}
         <SiteTicker />
 
-        {/* Page content */}
-        <main className="min-h-screen">{children}</main>
+        {/* Page chrome */}
+        <div className="b2b-shell">
+          <header className="b2b-header">
+            <a href="/" className="b2b-logo">Box2Board</a>
+            <nav className="b2b-nav">
+              <a href="/nfl">NFL</a>
+              <a href="/nba">NBA</a>
+              <a href="/mlb">MLB</a>
+              <a href="/nhl">NHL</a>
+            </nav>
+          </header>
+
+          <main className="b2b-main">{children}</main>
+
+          <footer className="b2b-footer">
+            <span>© {new Date().getFullYear()} Box2Board</span>
+          </footer>
+        </div>
       </body>
     </html>
   );
